@@ -136,6 +136,34 @@
     font-variant-numeric: tabular-nums;
   }
 
+  .clockfig { margin: 1.9rem 0 0; }
+  .clockfig svg { width: 100%; height: auto; display: block; }
+  .clk-rail { stroke: var(--rule); stroke-width: 1.5; }
+  .clk-hr { stroke: var(--ink-soft); stroke-width: 1; opacity: 0.45; }
+  .clk-sync { stroke: var(--accent); stroke-width: 2; }
+  .clk-beat { fill: var(--signal); }
+  .clk-reap { stroke: var(--ink-soft); fill: none; stroke-width: 1.5; }
+  .clk-band { fill: var(--accent); opacity: 0.11; }
+  .clk-axis { fill: var(--ink-soft); font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; }
+  .clk-peak { fill: var(--accent); font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 10px; letter-spacing: 0.12em; }
+  .clockfig figcaption, .stackfig figcaption {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.76rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-top: 0.7rem;
+  }
+
+  .stackfig { margin: 1.9rem 0 0; }
+  .stackfig svg { width: 100%; height: auto; display: block; }
+  .stk-box { fill: none; stroke: var(--rule); stroke-width: 1.5; }
+  .stk-sem { fill: var(--accent); opacity: 0.08; }
+  .stk-sembox { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+  .stk-arrow { stroke: var(--accent); stroke-width: 1.5; }
+  .stk-head { fill: var(--accent); }
+  .stk-title { fill: var(--accent); font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 13px; letter-spacing: 0.09em; }
+  .stk-sub { fill: var(--ink-soft); font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; }
+
   details {
     background: var(--inset);
     border-left: 2px solid var(--rule);
@@ -215,7 +243,7 @@
   <header class="masthead">
     <p class="kicker">Evan Monahan &middot; July 2026 &middot; shared privately</p>
     <h1>The systems I run, and what broke along the way</h1>
-    <p class="lede figure">I run my work on a fleet of 29 scheduled agents, built with Claude Code, on a Mac mini in my apartment. On the morning of July 6 the fleet ran 32 jobs with zero false alarms. That was one morning's run. Some mornings a job dies, and the ticket printer says so. This page is the part of that work I can show.</p>
+    <p class="lede figure">I run my work on a fleet of 28 scheduled agents, built with Claude Code, on a Mac mini in my apartment. On the morning of July 6 the fleet ran 32 jobs with zero false alarms. That was one morning's run. Some mornings a job dies, and the ticket printer says so. This page is the part of that work I can show.</p>
     <p class="boundary">I am building a consulting firm on this system. As of July that means one live engagement and nothing closed, which is why the code and the client work stay private while everything else here carries a number you can ask me about. Everything public is linked below.</p>
     <div class="verify">
       <span class="vlabel">Check the work</span>
@@ -229,12 +257,41 @@
 
   <section>
     <p class="eyebrow">The operating system</p>
-    <h2>Twenty-nine scheduled agents and a heartbeat</h2>
-    <p class="figure">Laika is the system that runs my day. This week's schedule holds 29 agents; a thirtieth is installed but switched off. The roster: the 6:40 intelligence brief, the 7:30 morning sweep, watchers across 30 job boards, a database sync on a four-hour cycle, an hourly on-site backup and a weekly encrypted offsite one, and the health checks that watch all of the above. Twice a day a heartbeat verifies that each scheduled output actually shipped, and when one did not, it prints an error ticket on a receipt printer beside my desk. At 6:25 each morning, before the heaviest hour of the schedule, a supervisor process clears the failure patterns I have seen before.</p>
+    <h2>Twenty-eight scheduled agents and a heartbeat</h2>
+    <p class="figure">Laika is the system that runs my day. This week's schedule holds 28 agents; two more are installed but switched off. The roster: the 6:40 intelligence brief, the 7:30 morning sweep, watchers across 30 job boards, a database sync on a four-hour cycle, an hourly on-site backup and a weekly encrypted offsite one, and the health checks that watch all of the above. Twice a day a heartbeat verifies that each scheduled output actually shipped, and when one did not, it prints an error ticket on a receipt printer beside my desk. At 6:25 each morning, before the heaviest hour of the schedule, a supervisor process clears the failure patterns I have seen before.</p>
+
+    <figure class="clockfig" aria-labelledby="clockcap">
+      <svg viewBox="0 0 640 120" role="img" aria-label="A 24-hour view of the fleet schedule: a backup tick every hour, a database sync every four hours, two daily heartbeat checks, an idle-session reaper at 4am, and a dense peak hour from 6 to 8am.">
+        <rect class="clk-band" x="164" y="18" width="52" height="72"/>
+        <text class="clk-peak" x="190" y="13" text-anchor="middle">PEAK</text>
+        <line class="clk-rail" x1="8" y1="88" x2="632" y2="88"/>
+        <!-- hourly on-site backup: a tick every hour -->
+        <g class="clk-hr">
+          <line x1="8" y1="88" x2="8" y2="93"/><line x1="34" y1="88" x2="34" y2="93"/><line x1="60" y1="88" x2="60" y2="93"/><line x1="86" y1="88" x2="86" y2="93"/><line x1="112" y1="88" x2="112" y2="93"/><line x1="138" y1="88" x2="138" y2="93"/><line x1="164" y1="88" x2="164" y2="93"/><line x1="190" y1="88" x2="190" y2="93"/><line x1="216" y1="88" x2="216" y2="93"/><line x1="242" y1="88" x2="242" y2="93"/><line x1="268" y1="88" x2="268" y2="93"/><line x1="294" y1="88" x2="294" y2="93"/><line x1="320" y1="88" x2="320" y2="93"/><line x1="346" y1="88" x2="346" y2="93"/><line x1="372" y1="88" x2="372" y2="93"/><line x1="398" y1="88" x2="398" y2="93"/><line x1="424" y1="88" x2="424" y2="93"/><line x1="450" y1="88" x2="450" y2="93"/><line x1="476" y1="88" x2="476" y2="93"/><line x1="502" y1="88" x2="502" y2="93"/><line x1="528" y1="88" x2="528" y2="93"/><line x1="554" y1="88" x2="554" y2="93"/><line x1="580" y1="88" x2="580" y2="93"/><line x1="606" y1="88" x2="606" y2="93"/><line x1="632" y1="88" x2="632" y2="93"/>
+        </g>
+        <!-- database sync: every four hours -->
+        <g class="clk-sync">
+          <line x1="8" y1="79" x2="8" y2="88"/><line x1="112" y1="79" x2="112" y2="88"/><line x1="216" y1="79" x2="216" y2="88"/><line x1="320" y1="79" x2="320" y2="88"/><line x1="424" y1="79" x2="424" y2="88"/><line x1="528" y1="79" x2="528" y2="88"/><line x1="632" y1="79" x2="632" y2="88"/>
+        </g>
+        <!-- 4:00 reaper -->
+        <circle class="clk-reap" cx="112" cy="88" r="4"/>
+        <!-- heartbeats: 8:20 and 22:50 -->
+        <circle class="clk-beat" cx="225" cy="88" r="3.5"/>
+        <circle class="clk-beat" cx="602" cy="88" r="3.5"/>
+        <!-- hour axis -->
+        <text class="clk-axis" x="8" y="108" text-anchor="start">00</text>
+        <text class="clk-axis" x="164" y="108" text-anchor="middle">06</text>
+        <text class="clk-axis" x="320" y="108" text-anchor="middle">12</text>
+        <text class="clk-axis" x="476" y="108" text-anchor="middle">18</text>
+        <text class="clk-axis" x="632" y="108" text-anchor="end">24</text>
+      </svg>
+      <figcaption id="clockcap">A day on the fleet. Fine ticks are the hourly on-site backup; the taller green marks are the database sync, every four hours; the two dots are the heartbeat that confirms every output shipped, morning and night; the open ring at 4:00 is the reaper that closes idle sessions before they pile up. The shaded band is the peak hour &mdash; 6:25 supervisor, 6:40 intelligence brief, 7:30 morning sweep &mdash; which is why the supervisor runs first.</figcaption>
+    </figure>
+
     <details>
       <summary>How the reliability layer works</summary>
       <p>The heartbeat trusts artifacts over exit codes because both failure directions are real: a job can exit 0 and ship nothing, and a job can exit dirty after shipping everything. So the check reads the output itself: did today's note get today's block, is the database fresh, did the backup snapshot advance.</p>
-      <p>Every change to the fleet has to pass a smoke test that runs inside the scheduler's own context, because a job that works in an interactive terminal can still fail under launchd, where permissions differ. Long-running agents sit under an escalating watchdog: a stall detector samples the process before killing it, so every kill leaves a diagnosis behind. The Claude CLI itself is pinned to a known-good version, and a gate job advances that pin only after the new version passes a live multi-turn test, twice.</p>
+      <p>Every change to the fleet has to pass a smoke test that runs inside the scheduler's own context, because a job that works in an interactive terminal can still fail under launchd, where permissions differ. Long-running agents sit under an escalating watchdog: a stall detector samples the process before killing it, so every kill leaves a diagnosis behind. The Claude CLI is pinned to a known-good version. When a synthesis step wedges &mdash; which still happens &mdash; a tool-free watchdog catches the stall within four minutes and retries from a clean process, instead of trying to outguess which version is at fault.</p>
       <p>The mini is the only machine that matters. The laptop and phone reach it over a private mesh network, so the same system answers wherever I am.</p>
     </details>
   </section>
@@ -242,7 +299,7 @@
   <section class="broke">
     <p class="eyebrow">The incident log</p>
     <h2>What broke</h2>
-    <p>Three failures since June were serious enough to get written post-mortems. One of the guards they exposed is still unbuilt. These tickets are the honest version of the section above.</p>
+    <p>Four failures since June were serious enough to get written post-mortems. One of the guards they exposed is still unbuilt. These tickets are the honest version of the section above.</p>
 
     <div class="ticket">
       <p class="ticket-head">Jun 23 &middot; every overnight job killed</p>
@@ -264,12 +321,45 @@
       <p><span class="tk-label">Root cause:</span> the backup destination never remounted after the interruption. One manual mount fixed it.</p>
       <p><span class="tk-label">Fix:</span> the heartbeat now watches backup freshness directly. The guard that would remount the disk automatically is designed and still unbuilt. It is on the list.</p>
     </div>
+
+    <div class="ticket">
+      <p class="ticket-head">Jul 18 &middot; the brief that stalled almost every morning</p>
+      <p><span class="tk-label">What happened:</span> the intelligence brief's synthesis step froze mid-run and got killed nearly every day, blanking the morning brief.</p>
+      <p><span class="tk-label">Root cause:</span> a random stall in the synthesis call, and not the one I had blamed. I had spent the prior week building a version-chasing gate on the theory that a bad Claude release was at fault. Then three different versions wedged the same way on one morning, which proved the version was never the cause.</p>
+      <p><span class="tk-label">Fix:</span> I split one large synthesis call into five small ones that use no tools, which narrows what can stream to two events, so a stall is unambiguous within four minutes and retried from a clean process. Then I deleted the version-chasing machinery I had just built. The cleaner fix wanted a paid API key; I chose the free-tier redesign instead and wrote down why.</p>
+    </div>
   </section>
 
   <section>
     <p class="eyebrow">Memory</p>
     <h2>One database under everything</h2>
-    <p class="figure">Everything the system and I do ends up written down. A plain-text vault of 5,759 notes holds the projects, people, decisions, and daily journal. Under it sits a local database that mirrors the rest of my working life: 65,424 semantic embeddings, 29,169 iMessages, 518 logged working sessions, and a Gmail archive of 323,753 messages reaching back to 2009. Recall works by meaning, so a vague question still finds the right note, and the embedding models that power it run on the machine itself. The database never syncs anywhere, and the offsite backup copy is encrypted before it leaves.</p>
+    <p class="figure">Everything the system and I do ends up written down. A plain-text vault of 5,759 notes holds the projects, people, decisions, and daily journal. Under it sits a local database that mirrors the rest of my working life &mdash; a Gmail archive reaching back to 2009, the iMessage history, logged working sessions, and the embeddings that let recall work by meaning rather than keyword. Ask it a vague question and the right note still comes back. The embedding models that power that run on the machine itself; the database never syncs anywhere, and the offsite backup copy is encrypted before it leaves.</p>
+
+    <figure class="stackfig" aria-labelledby="stackcap">
+      <svg viewBox="0 0 640 190" role="img" aria-label="Three layers of recall: a semantic index, computed on local models, indexes both the vault (5,759 notes, the working set) and the lake (mail, messages, and session history, the archive).">
+        <!-- semantic layer, left -->
+        <rect class="stk-sem" x="40" y="24" width="150" height="142"/>
+        <rect class="stk-sembox" x="40" y="24" width="150" height="142"/>
+        <text class="stk-title" x="115" y="86" text-anchor="middle">SEMANTIC</text>
+        <text class="stk-title" x="115" y="103" text-anchor="middle">INDEX</text>
+        <text class="stk-sub" x="115" y="126" text-anchor="middle">on local models</text>
+        <!-- arrows: indexes both -->
+        <line class="stk-arrow" x1="190" y1="59" x2="243" y2="59"/>
+        <polygon class="stk-head" points="243,55 243,63 250,59"/>
+        <line class="stk-arrow" x1="190" y1="131" x2="243" y2="131"/>
+        <polygon class="stk-head" points="243,127 243,135 250,131"/>
+        <!-- vault -->
+        <rect class="stk-box" x="250" y="32" width="350" height="54"/>
+        <text class="stk-title" x="270" y="58" text-anchor="start">VAULT</text>
+        <text class="stk-sub" x="270" y="74" text-anchor="start">5,759 notes &#183; the working set</text>
+        <!-- lake -->
+        <rect class="stk-box" x="250" y="104" width="350" height="54"/>
+        <text class="stk-title" x="270" y="130" text-anchor="start">LAKE</text>
+        <text class="stk-sub" x="270" y="146" text-anchor="start">mail to 2009 &#183; messages &#183; sessions</text>
+      </svg>
+      <figcaption id="stackcap">A question by meaning goes into the index on the left; it reaches across both stores &mdash; the markdown vault and the archive lake &mdash; and returns the note, the message, and the journal entry that touch it. Nothing about the archive leaves the machine to make that happen.</figcaption>
+    </figure>
+
     <details>
       <summary>How recall works</summary>
       <p>Three layers. The vault is the working set: plain markdown, readable in any editor, organized consistently enough that agents navigate it without special tooling. The lake is the archive: messages, mail, highlights, and session history stitched into one local SQLite database. The semantic layer indexes both with embeddings computed on the machine itself, using a small local model, so a question like "what was I working on last Tuesday" comes back with the journal entry, the messages, and the notes that touched it.</p>
@@ -318,7 +408,7 @@
   </section>
 
   <footer>
-    <p>Drafted by me, refined and built with Claude Code. Every number on this page was checked against its source log or note on July 17, 2026.</p>
+    <p>Drafted by me, refined and built with Claude Code. Every number on this page was checked against its source log or note; the fleet counts were re-verified July 20, 2026.</p>
     <p>Laika is named for the space dog and the camera. This page is shared privately: if you have the link, I sent it to you.</p>
     <p class="mono">Evan Monahan &middot; Tiburon, CA &middot; <a href="https://www.linkedin.com/in/evan-monahan-982ba931">https://www.linkedin.com/in/evan-monahan-982ba931</a></p>
   </footer>
